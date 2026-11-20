@@ -155,10 +155,11 @@ table.tbl{width:100%;border-collapse:collapse}
 .hr-banner{text-align:center;color:#fff;font-weight:800;font-size:12.5px;padding:5px 10px;letter-spacing:.4px}
 .c-sky{background:#0ea5e9}.c-amber{background:#facc15;color:#1f2937}.c-green{background:#16a34a}.c-red{background:#dc2626}.c-violet{background:#7c3aed}.c-gray{background:#64748b}.c-navy{background:#0f172a}
 .hr-head{background:var(--navy);color:#fff;display:flex;align-items:flex-start;gap:14px;padding:11px 16px;direction:rtl}
-.hr-ar{flex:0 1 auto;max-width:46%;font-size:19px;font-weight:800;line-height:1.4;color:#fff;text-align:right;direction:rtl}
+.hr-ar{flex:0 1 auto;max-width:46%;color:#fff;text-align:right;direction:rtl}
+.hr-arn{font-size:19px;font-weight:800;line-height:1.4}
 .hr-enw{flex:1 1 0;min-width:0;direction:ltr;text-align:left}
 .hr-en{font-size:19px;font-weight:800;line-height:1.3}
-.hr-sub{font-size:12px;color:#cbd5e1;margin-top:1px;text-align:left}
+.hr-sub{font-size:12px;color:#cbd5e1;margin-top:1px;text-align:right}
 .hr-body{padding:11px 14px 8px}
 .rt{width:100%;border-collapse:collapse;font-size:12.5px;border:2px solid #1e293b}
 .rt th{background:#e2e8f0;border:1.5px solid #475569;padding:5px 8px;font-weight:700;text-align:right;font-family:'Segoe UI',Arial,sans-serif;font-size:12px}
@@ -168,10 +169,11 @@ table.tbl{width:100%;border-collapse:collapse}
 .rt .t-en{font-weight:700;font-family:'Segoe UI',Arial,sans-serif}
 .rt .t-ar{font-size:11px;color:#64748b}
 .hr-cbc{background:#d9f99d;color:#365314;font-weight:800;text-align:center;padding:8px 10px;border-radius:4px;font-size:14px}
-.hr-sec{margin-top:9px;--fg:#b45309;--bg:#fef3c7;--bul:#f59e0b}
-.hr-sec h4{margin:0 0 4px;font-size:13px;font-weight:800;color:var(--fg);background:var(--bg);border-inline-start:4px solid var(--bul);padding:2px 9px;border-radius:3px}
+.hr-sec{margin-top:9px;padding:6px 10px;border-radius:5px;background:var(--bg);color:var(--fg);border-inline-start:4px solid var(--bul);--fg:#0f172a;--bg:transparent;--bul:#94a3b8}
+.hr-sec.none{padding:0 2px;border-inline-start:0;border-radius:0}
+.hr-sec h4{margin:0 0 3px;font-size:13px;font-weight:800;color:var(--fg)}
 .hr-sec ul{list-style:none;margin:0;padding:0}
-.hr-sec li{position:relative;padding-inline-start:15px;font-size:12.5px;line-height:1.7;color:#0f172a}
+.hr-sec li{position:relative;padding-inline-start:15px;font-size:12.5px;line-height:1.7;color:var(--fg)}
 .hr-sec li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:6px;height:6px;border-radius:1px;background:var(--bul)}
 .lang{display:inline-flex;border:1px solid #475569;border-radius:8px;overflow:hidden;flex:none}
 .lang button{background:transparent;border:0;color:#cbd5e1;padding:5px 10px;white-space:nowrap;font-weight:700;font-size:12.5px;line-height:1.4}
@@ -185,6 +187,8 @@ table.tbl{width:100%;border-collapse:collapse}
 .swatches{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:8px}
 .sw{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #94a3b8;padding:0;position:relative}
 .sw.on{box-shadow:0 0 0 2px var(--navy)}
+.sw.none{background:linear-gradient(135deg,#fff 44%,#ef4444 44%,#ef4444 56%,#fff 56%)}
+.sw.none.on::after{color:#0f172a}
 .sw.on::after{content:"✓";color:#fff;font-size:14px;font-weight:800;position:absolute;inset:0;display:grid;place-items:center;line-height:1}
 .sec{border-inline-start:5px solid var(--bul,#cbd5e1)}
 .sec .lbl{font-size:12px;font-weight:700;color:#475569;margin:6px 0 3px;display:block}
@@ -246,10 +250,10 @@ const SEC_COLORS = [ // [key, اسم, لون الخط/العنوان (غامق)�
   ['orange', 'برتقالي', '#b45309', '#fef3c7', '#f59e0b'], ['red', 'أحمر', '#b91c1c', '#fee2e2', '#ef4444'],
   ['pink', 'وردي', '#be185d', '#fce7f3', '#ec4899'], ['blue', 'أزرق', '#1d4ed8', '#dbeafe', '#3b82f6'],
   ['green', 'أخضر', '#047857', '#d1fae5', '#10b981'], ['violet', 'بنفسجي', '#6d28d9', '#ede9fe', '#8b5cf6'],
-  ['slate', 'رمادي', '#334155', '#e2e8f0', '#64748b']
+  ['slate', 'رمادي', '#334155', '#e2e8f0', '#64748b'],
+  ['none', 'بدون لون (none)', '#0f172a', 'transparent', '#94a3b8']   // الاختيار الثامن وهو الافتراضي
 ];
-const SEC_FALLBACK = ['orange', 'pink', 'blue', 'green', 'violet']; // ألوان الخانات القديمة اللي ماليهاش لون محفوظ
-const secColor = (s, i) => SEC_COLORS.find((c) => c[0] === (s && s.color)) || SEC_COLORS.find((c) => c[0] === SEC_FALLBACK[i % SEC_FALLBACK.length]);
+const secColor = (s) => SEC_COLORS.find((c) => c[0] === (s && s.color)) || SEC_COLORS[SEC_COLORS.length - 1];
 const secStyle = (c) => '--fg:' + c[2] + ';--bg:' + c[3] + ';--bul:' + c[4];
 const LANGS = [['en', 'EN'], ['ar', 'عربي'], ['he', 'עברית']];
 const COLORS = [['sky', 'أزرق'], ['amber', 'أصفر'], ['green', 'أخضر'], ['red', 'أحمر'], ['violet', 'بنفسجي'], ['gray', 'رمادي'], ['navy', 'كحلي']];
@@ -332,7 +336,7 @@ function newHotelData() {
   return {
     nameEn: '', nameAr: '', subtitle: '', stars: 5, bannerText: '', bannerColor: 'sky',
     caseByCase: false, caseByCaseText: 'Case By Case',
-    rooms: [emptyRoom()], sections: [{ title: 'NOTES', items: [], color: 'orange' }, { title: 'CANCELLATION POLICY', items: [], color: 'blue' }]
+    rooms: [emptyRoom()], sections: [{ title: 'NOTES', items: [], color: 'none' }, { title: 'CANCELLATION POLICY', items: [], color: 'none' }]
   };
 }
 
@@ -603,7 +607,7 @@ function editorHtml(h) {
   html += '<div class="ecard"><h4>بيانات الفندق</h4><div class="grid2">' +
     fld('اسم الفندق (English)', 'data.nameEn', d.nameEn, { max: 150, dir: 'ltr', ph: 'Regency Plaza Aqua Park 5*' }) +
     fld('اسم الفندق (عربي)', 'data.nameAr', d.nameAr, { max: 150 }) +
-    fld('الوصف تحت الاسم (عربي)', 'data.subtitle', d.subtitle, { max: 200, ph: 'ستاندرد أكوا بارك 5 نجوم', cls: '' }) +
+    fld('الوصف تحت الاسم العربي', 'data.subtitle', d.subtitle, { max: 200, ph: 'ستاندرد أكوا بارك 5 نجوم', cls: '' }) +
     '<label class="f"><span>المنطقة</span><select data-bind="regionId"><option value="">— اختر المنطقة —</option>' + regionOpts + '</select></label>' +
     '<label class="f"><span>التقييم بالنجوم</span><select data-bind="data.stars" data-type="int">' + starOpts + '</select></label><div></div>' +
     fld('شريط التصنيف (اتركه فاضي لو مش محتاجه)', 'data.bannerText', d.bannerText, { max: 80, dir: 'auto', ph: 'FAMILIES ONLY' }) +
@@ -636,16 +640,16 @@ function editorHtml(h) {
   html += '</div>';
 
   html += '<div class="ecard"><h4><span>الملاحظات (Notes)</span><button class="btn-light" data-act="addSection">' + icon('plus', 15) + ' إضافة ملاحظة</button></h4>' +
-    '<div class="hint" style="margin:-6px 0 12px">اكتب الملاحظات بالإنجليزي. التقرير بيترجمها تلقائيًا للعربي أو العبري حسب اللغة المختارة فوق. اختار لون لكل ملاحظة.</div>';
+    '<div class="hint" style="margin:-6px 0 12px">اكتب الملاحظات بالإنجليزي. التقرير بيترجمها تلقائيًا للعربي أو العبري حسب اللغة المختارة فوق. اختار لون لكل ملاحظة، أو «none» لو مش عايز لون (الافتراضي).</div>';
   d.sections.forEach((s, si) => {
-    const cur = secColor(s, si);
+    const cur = secColor(s);
     html += '<div class="sec" style="' + secStyle(cur) + '"><div class="sec-top"><div style="flex:1"><span class="lbl">اسم الملاحظة</span>' +
       '<input class="inp" dir="ltr" data-bind="data.sections.' + si + '.title" value="' + esc(s.title) + '" maxlength="80" placeholder="e.g. SUPPLEMENTS"></div>' +
       '<button class="icon-btn danger" data-act="delSection" data-si="' + si + '" title="حذف الملاحظة">' + icon('trash', 16) + '</button></div>' +
       '<span class="lbl">وصف الملاحظة (كل نقطة في سطر مستقل)</span>' +
       '<textarea class="inp" dir="ltr" data-bind="data.sections.' + si + '.items" data-type="lines" placeholder="1- POOL VIEW 7$ PER PERSON PER NIGHT">' + esc((s.items || []).join('\n')) + '</textarea>' +
       '<div class="swatches"><span class="muted small">لون الملاحظة:</span>' +
-      SEC_COLORS.map((c) => '<button type="button" class="sw' + (c[0] === cur[0] ? ' on' : '') + '" style="background:' + c[4] + '" title="' + c[1] + '" aria-label="' + c[1] + '" data-act="secColor" data-si="' + si + '" data-c="' + c[0] + '"></button>').join('') +
+      SEC_COLORS.map((c) => '<button type="button" class="sw' + (c[0] === 'none' ? ' none' : '') + (c[0] === cur[0] ? ' on' : '') + '"' + (c[0] === 'none' ? '' : ' style="background:' + c[4] + '"') + ' title="' + c[1] + '" aria-label="' + c[1] + '" data-act="secColor" data-si="' + si + '" data-c="' + c[0] + '"></button>').join('') +
       '</div></div>';
   });
   if (!d.sections.length) html += '<div class="empty-sm">مفيش ملاحظات. اضغط «إضافة ملاحظة».</div>';
@@ -804,8 +808,8 @@ const fmtPrice = (v) => {
 const trText = (x) => (S.lang === 'en' ? x : (S.tr[S.lang][x] || x));
 
 function noteHtml(s, i) {
-  const c = secColor(s, i), rtl = S.lang !== 'en', title = trText(s.title);
-  return '<div class="hr-sec" style="' + secStyle(c) + '" dir="' + (rtl ? 'rtl' : 'ltr') + '" lang="' + S.lang + '">' +
+  const c = secColor(s), rtl = S.lang !== 'en', title = trText(s.title);
+  return '<div class="hr-sec' + (c[0] === 'none' ? ' none' : '') + '" style="' + secStyle(c) + '" dir="' + (rtl ? 'rtl' : 'ltr') + '" lang="' + S.lang + '">' +
     (title ? '<h4>' + esc(/[:：]$/.test(title) ? title : title + ':') + '</h4>' : '') +
     '<ul>' + s.items.map((x) => '<li>' + esc(trText(x)) + '</li>').join('') + '</ul></div>';
 }
@@ -815,9 +819,8 @@ function hotelReportHtml(h) {
   let html = '<article class="hr" data-id="' + esc(h.id) + '">';
   if (d.bannerText) html += '<div class="hr-banner c-' + d.bannerColor + '" dir="auto">' + esc(d.bannerText) + '</div>';
   // الاسم العربي على اليمين والإنجليزي على الشمال (بيانات الفندق ما بتتترجمش)
-  html += '<header class="hr-head"><div class="hr-ar" dir="rtl">' + esc(d.nameAr) + '</div>' +
-    '<div class="hr-enw" dir="ltr"><div class="hr-en">' + esc(d.nameEn) + '</div>' + (d.subtitle ? '<div class="hr-sub" dir="auto">' + esc(d.subtitle) + '</div>' : '') +
-    '</div></header><div class="hr-body">';
+  html += '<header class="hr-head"><div class="hr-ar" dir="rtl"><div class="hr-arn">' + esc(d.nameAr) + '</div>' + (d.subtitle ? '<div class="hr-sub" dir="auto">' + esc(d.subtitle) + '</div>' : '') + '</div>' +
+    '<div class="hr-enw" dir="ltr"><div class="hr-en">' + esc(d.nameEn) + '</div></div></header><div class="hr-body">';
   if (d.caseByCase) {
     html += '<div class="hr-cbc" dir="auto">' + esc(d.caseByCaseText || 'Case By Case') + '</div>';
   } else if (d.rooms.length) {
@@ -1146,7 +1149,7 @@ document.addEventListener('click', async (e) => {
     case 'delRoom': { const h = selectedHotel(); h.data.rooms.splice(ri, 1); renderEditor(); refreshChrome(); break; }
     case 'addPeriod': { const h = selectedHotel(); h.data.rooms[ri].periods.push(emptyPeriod()); renderEditor(); refreshChrome(); break; }
     case 'delPeriod': { const h = selectedHotel(); h.data.rooms[ri].periods.splice(pi, 1); renderEditor(); refreshChrome(); break; }
-    case 'addSection': { const h = selectedHotel(); h.data.sections.push({ title: '', items: [], color: SEC_COLORS[h.data.sections.length % SEC_COLORS.length][0] }); renderEditor(); refreshChrome(); break; }
+    case 'addSection': { const h = selectedHotel(); h.data.sections.push({ title: '', items: [], color: 'none' }); renderEditor(); refreshChrome(); break; }
     case 'secColor': { const h = selectedHotel(); h.data.sections[si].color = el.dataset.c; renderEditor(); refreshChrome(); break; }
     case 'lang': setLang(el.dataset.l); break;
     case 'delSection': { const h = selectedHotel(); h.data.sections.splice(si, 1); renderEditor(); refreshChrome(); break; }
