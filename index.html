@@ -7,7 +7,7 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0f172a; --navy2:#1e293b; --navy3:#334155;
@@ -15,7 +15,7 @@
   --bg:#f8fafc; --card:#fff; --line:#e2e8f0; --line2:#cbd5e1;
   --muted:#64748b; --text:#0f172a;
   --green:#0f6b52; --green-d:#0b5340; --red:#dc2626; --red-bg:#fef2f2;
-  --font:'Cairo','Segoe UI',Tahoma,'Noto Sans Arabic',system-ui,sans-serif;
+  --font:'Cairo','Heebo','Segoe UI',Tahoma,'Noto Sans Arabic','Noto Sans Hebrew',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -26,20 +26,20 @@ button{cursor:pointer}
 [hidden]{display:none!important}
 
 /* ---------- header ---------- */
-.hdr{background:var(--navy);color:#fff;height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:0 24px;box-shadow:0 2px 8px rgba(15,23,42,.25);position:sticky;top:0;z-index:20}
+.hdr{background:var(--navy);color:#fff;height:64px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:0 20px;box-shadow:0 2px 8px rgba(15,23,42,.25);position:sticky;top:0;z-index:20}
 .brand{display:flex;align-items:center;gap:12px}
 .brand h1{margin:0;font-size:20px;font-weight:800;white-space:nowrap}
 .logo{width:36px;height:36px;border-radius:8px;background:var(--amber);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:15px;font-family:'Segoe UI',Arial,sans-serif}
-.tabs{display:flex;gap:4px;background:var(--navy2);padding:4px;border-radius:10px}
+.tabs{justify-self:center;display:flex;gap:4px;background:var(--navy2);padding:4px;border-radius:10px}
 .tab{border:0;background:transparent;color:#cbd5e1;padding:7px 18px;border-radius:8px;font-weight:600;font-size:14px}
 .tab:hover{color:#fff}
 .tab.on{background:var(--amber);color:var(--navy);font-weight:700}
-.tools{display:flex;align-items:center;gap:12px;justify-content:flex-start}
+.tools{display:flex;align-items:center;gap:10px;justify-content:flex-start}
 .who{display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
 .who-n{font-size:13px;font-weight:600}
 .role{font-size:10px;font-weight:700;padding:1px 7px;border-radius:5px;background:var(--amber);color:var(--navy);margin-top:2px}
 .role.r-editor{background:#38bdf8}.role.r-viewer{background:#94a3b8}
-.btn-save{display:flex;align-items:center;gap:8px;border:0;background:var(--green);color:#fff;padding:8px 16px;border-radius:8px;font-weight:700;position:relative}
+.btn-save{white-space:nowrap;display:flex;align-items:center;gap:8px;border:0;background:var(--green);color:#fff;padding:8px 16px;border-radius:8px;font-weight:700;position:relative}
 .btn-save:hover:not(:disabled){background:var(--green-d)}
 .btn-save:disabled{background:#1b4a3f;color:#7fa89c;cursor:not-allowed}
 .btn-save .cnt{background:var(--amber);color:var(--navy);border-radius:999px;font-size:11px;min-width:20px;height:20px;display:grid;place-items:center;padding:0 5px}
@@ -154,24 +154,40 @@ table.tbl{width:100%;border-collapse:collapse}
 .hr{background:#fff;border:1px solid var(--line2);border-radius:8px;overflow:hidden;margin:0 0 18px;display:block;break-inside:avoid;page-break-inside:avoid}
 .hr-banner{text-align:center;color:#fff;font-weight:800;font-size:12.5px;padding:5px 10px;letter-spacing:.4px}
 .c-sky{background:#0ea5e9}.c-amber{background:#facc15;color:#1f2937}.c-green{background:#16a34a}.c-red{background:#dc2626}.c-violet{background:#7c3aed}.c-gray{background:#64748b}.c-navy{background:#0f172a}
-.hr-head{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:11px 16px}
+.hr-head{background:var(--navy);color:#fff;display:flex;align-items:flex-start;gap:14px;padding:11px 16px;direction:rtl}
+.hr-ar{flex:0 1 auto;max-width:46%;font-size:19px;font-weight:800;line-height:1.4;color:#fff;text-align:right;direction:rtl}
+.hr-enw{flex:1 1 0;min-width:0;direction:ltr;text-align:left}
 .hr-en{font-size:19px;font-weight:800;line-height:1.3}
-.hr-sub{font-size:12px;color:#cbd5e1;margin-top:1px}
-.hr-ar{font-size:15.5px;font-weight:600;color:#e2e8f0;text-align:left;padding-top:2px}
+.hr-sub{font-size:12px;color:#cbd5e1;margin-top:1px;text-align:left}
 .hr-body{padding:11px 14px 8px}
-.rt{width:100%;border-collapse:collapse;font-size:12.5px}
-.rt th{background:#f1f5f9;border:1px solid var(--line2);padding:5px 8px;font-weight:700;text-align:right;font-family:'Segoe UI',Arial,sans-serif;font-size:12px}
-.rt td{border:1px solid var(--line2);padding:5px 8px;vertical-align:middle}
+.rt{width:100%;border-collapse:collapse;font-size:12.5px;border:2px solid #1e293b}
+.rt th{background:#e2e8f0;border:1.5px solid #475569;padding:5px 8px;font-weight:700;text-align:right;font-family:'Segoe UI',Arial,sans-serif;font-size:12px}
+.rt td{border:1.5px solid #475569;padding:5px 8px;vertical-align:middle}
 .rt td.c{text-align:center;font-variant-numeric:tabular-nums}
-.rt .t-en{font-weight:600;font-family:'Segoe UI',Arial,sans-serif}
+.rt td.b{font-weight:700;font-family:'Segoe UI',Arial,sans-serif}
+.rt .t-en{font-weight:700;font-family:'Segoe UI',Arial,sans-serif}
 .rt .t-ar{font-size:11px;color:#64748b}
 .hr-cbc{background:#d9f99d;color:#365314;font-weight:800;text-align:center;padding:8px 10px;border-radius:4px;font-size:14px}
-.hr-sec{margin-top:9px}
-.hr-sec h4{margin:0 0 3px;font-size:13px;font-weight:800}
+.hr-sec{margin-top:9px;--fg:#b45309;--bg:#fef3c7;--bul:#f59e0b}
+.hr-sec h4{margin:0 0 4px;font-size:13px;font-weight:800;color:var(--fg);background:var(--bg);border-inline-start:4px solid var(--bul);padding:2px 9px;border-radius:3px}
 .hr-sec ul{list-style:none;margin:0;padding:0}
-.hr-sec li{position:relative;padding-inline-start:15px;font-size:12.5px;line-height:1.7}
-.hr-sec li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:6px;height:6px;border-radius:1px;background:var(--bullet,#f59e0b)}
-.hr-sec.s0{--bullet:#f59e0b}.hr-sec.s1{--bullet:#ec4899}.hr-sec.s2{--bullet:#0ea5e9}.hr-sec.s3{--bullet:#22c55e}.hr-sec.s4{--bullet:#8b5cf6}
+.hr-sec li{position:relative;padding-inline-start:15px;font-size:12.5px;line-height:1.7;color:#0f172a}
+.hr-sec li::before{content:"";position:absolute;inset-inline-start:2px;top:.62em;width:6px;height:6px;border-radius:1px;background:var(--bul)}
+.lang{display:inline-flex;border:1px solid #475569;border-radius:8px;overflow:hidden;flex:none}
+.lang button{background:transparent;border:0;color:#cbd5e1;padding:5px 10px;white-space:nowrap;font-weight:700;font-size:12.5px;line-height:1.4}
+.lang button.on{background:var(--amber);color:#1f2937}
+.rtop .lang{border-color:var(--line2)}
+.rtop .lang button{color:#334155}
+.rtop .lang button.on{color:#1f2937}
+.rtop-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tr-status{font-weight:600;color:#92400e}
+.tr-status.err{color:#b91c1c}
+.swatches{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.sw{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #94a3b8;padding:0;position:relative}
+.sw.on{box-shadow:0 0 0 2px var(--navy)}
+.sw.on::after{content:"✓";color:#fff;font-size:14px;font-weight:800;position:absolute;inset:0;display:grid;place-items:center;line-height:1}
+.sec{border-inline-start:5px solid var(--bul,#cbd5e1)}
+.sec .lbl{font-size:12px;font-weight:700;color:#475569;margin:6px 0 3px;display:block}
 .empty-big{text-align:center;color:var(--muted);padding:60px 10px;font-weight:600}
 
 /* ---------- modal ---------- */
@@ -226,6 +242,16 @@ const API_URL = String((window.APP_CONFIG && window.APP_CONFIG.API_URL) || '').t
 const IDLE_MS = 60 * 60 * 1000;
 const LS_KEY = 'hotelRates.session';
 const ROLE_AR = { admin: 'مدير', editor: 'محرر', viewer: 'مشاهد' };
+const SEC_COLORS = [ // [key, اسم, لون الخط/العنوان (غامق)، خلفية فاتحة، لون النقطة والإطار]
+  ['orange', 'برتقالي', '#b45309', '#fef3c7', '#f59e0b'], ['red', 'أحمر', '#b91c1c', '#fee2e2', '#ef4444'],
+  ['pink', 'وردي', '#be185d', '#fce7f3', '#ec4899'], ['blue', 'أزرق', '#1d4ed8', '#dbeafe', '#3b82f6'],
+  ['green', 'أخضر', '#047857', '#d1fae5', '#10b981'], ['violet', 'بنفسجي', '#6d28d9', '#ede9fe', '#8b5cf6'],
+  ['slate', 'رمادي', '#334155', '#e2e8f0', '#64748b']
+];
+const SEC_FALLBACK = ['orange', 'pink', 'blue', 'green', 'violet']; // ألوان الخانات القديمة اللي ماليهاش لون محفوظ
+const secColor = (s, i) => SEC_COLORS.find((c) => c[0] === (s && s.color)) || SEC_COLORS.find((c) => c[0] === SEC_FALLBACK[i % SEC_FALLBACK.length]);
+const secStyle = (c) => '--fg:' + c[2] + ';--bg:' + c[3] + ';--bul:' + c[4];
+const LANGS = [['en', 'EN'], ['ar', 'عربي'], ['he', 'עברית']];
 const COLORS = [['sky', 'أزرق'], ['amber', 'أصفر'], ['green', 'أخضر'], ['red', 'أحمر'], ['violet', 'بنفسجي'], ['gray', 'رمادي'], ['navy', 'كحلي']];
 const BASIS = ['Soft All Inclusive', 'All Inclusive', 'Half Board', 'Full Board', 'Bed & Breakfast', 'Room Only'];
 const ACTION_AR = {
@@ -259,8 +285,10 @@ const S = {
   token: null, user: null, regions: [], hotels: [], saved: {}, savedOrder: [], savedData: {},
   tab: 'hotels', region: 'all', rRegion: 'all', search: '', selected: null,
   logs: { items: [], hasMore: false, loaded: false, offset: 0 }, users: null,
-  lastActive: Date.now()
+  lastActive: Date.now(),
+  lang: 'en', tr: { ar: {}, he: {} }, trBusy: false, trErr: ''
 };
+try { const l = localStorage.getItem('hr_lang'); if (l === 'ar' || l === 'he') S.lang = l; } catch (e) { /* ignore */ }
 const isAdmin = () => !!S.user && S.user.role === 'admin';
 const canEdit = () => !!S.user && (S.user.role === 'admin' || S.user.role === 'editor');
 
@@ -268,13 +296,14 @@ const canEdit = () => !!S.user && (S.user.role === 'admin' || S.user.role === 'e
    تنظيف بيانات الفندق (نفس منطق السيرفر) — لمعرفة هل في تعديل فعلي
    ==================================================================== */
 function t1(v) { return String(v == null ? '' : v).replace(/[\r\n\t]+/g, ' ').replace(/\s{2,}/g, ' ').trim(); }
+const pr = (v) => t1(v).replace(/\$/g, '').trim(); // السعر: بنشيل أي $ والعرض بيضيفها
 function norm(d) {
   d = d || {};
   const rooms = [];
   (d.rooms || []).forEach((r) => {
     const periods = [];
     (r.periods || []).forEach((p) => {
-      const q = { from: t1(p.from), to: t1(p.to), single: t1(p.single), double: t1(p.double), triple: t1(p.triple) };
+      const q = { from: t1(p.from), to: t1(p.to), single: pr(p.single), double: pr(p.double), triple: pr(p.triple) };
       if (q.from || q.to || q.single || q.double || q.triple) periods.push(q);
     });
     const room = { typeEn: t1(r.typeEn), typeAr: t1(r.typeAr), basis: t1(r.basis), periods: periods };
@@ -284,6 +313,7 @@ function norm(d) {
   (d.sections || []).forEach((s) => {
     const items = (s.items || []).map(t1).filter(Boolean);
     const sec = { title: t1(s.title), items: items };
+    if (SEC_COLORS.some((c) => c[0] === s.color)) sec.color = s.color;
     if (sec.title || items.length) sections.push(sec);
   });
   return {
@@ -301,8 +331,8 @@ function emptyRoom() { return { typeEn: '', typeAr: '', basis: '', periods: [emp
 function newHotelData() {
   return {
     nameEn: '', nameAr: '', subtitle: '', stars: 5, bannerText: '', bannerColor: 'sky',
-    caseByCase: false, caseByCaseText: 'Case By Case — السعر متغير حسب فترة الحجز',
-    rooms: [emptyRoom()], sections: [{ title: 'ملاحظات', items: [] }, { title: 'سياسة الإلغاء', items: [] }]
+    caseByCase: false, caseByCaseText: 'Case By Case',
+    rooms: [emptyRoom()], sections: [{ title: 'NOTES', items: [], color: 'orange' }, { title: 'CANCELLATION POLICY', items: [], color: 'blue' }]
   };
 }
 
@@ -461,7 +491,7 @@ function render() {
     '<div class="shell"><header class="hdr noprint">' +
     '<div class="brand"><div class="logo">HR</div><h1>إدارة فنادق وتقارير</h1></div>' +
     '<nav class="tabs">' + tabs.map((t) => '<button class="tab' + (S.tab === t.id ? ' on' : '') + '" data-act="tab" data-tab="' + t.id + '">' + t.label + '</button>').join('') + '</nav>' +
-    '<div class="tools">' +
+    '<div class="tools">' + langSwitchHtml() +
     '<div class="who"><span class="who-n" dir="ltr">' + esc(u.username) + '</span><span class="role r-' + u.role + '">' + ROLE_AR[u.role] + '</span></div>' +
     (canEdit() ? '<button id="saveBtn" class="btn-save" data-act="saveAll"' + (p.count ? '' : ' disabled') + '>' + icon('db') + '<span>حفظ في قاعدة البيانات</span><b class="cnt">' + (p.count || '') + '</b></button>' : '') +
     '<button class="btn-out" data-act="logout">' + icon('logout') + '<span>خروج</span></button>' +
@@ -590,14 +620,14 @@ function editorHtml(h) {
       '<div class="grid3">' + fld('Type of Room', 'data.rooms.' + ri + '.typeEn', r.typeEn, { max: 100, dir: 'ltr', ph: 'Standard Room' }) +
       fld('نوع الغرفة (عربي)', 'data.rooms.' + ri + '.typeAr', r.typeAr, { max: 100 }) +
       fld('Basis', 'data.rooms.' + ri + '.basis', r.basis, { max: 100, dir: 'ltr', list: 'basisList', ph: 'Soft All Inclusive' }) + '</div>' +
-      '<table class="ptable"><thead><tr><th>من</th><th>إلى</th><th>Single</th><th>Double P/P</th><th>Triple P/P</th><th></th></tr></thead><tbody>';
+      '<table class="ptable"><thead><tr><th>من</th><th>إلى</th><th>Single $</th><th>Double P/P $</th><th>Triple P/P $</th><th></th></tr></thead><tbody>';
     r.periods.forEach((p, pi) => {
       const b = 'data.rooms.' + ri + '.periods.' + pi + '.';
       html += '<tr><td><input class="inp" type="date" dir="ltr" data-bind="' + b + 'from" value="' + esc(p.from) + '"></td>' +
         '<td><input class="inp" type="date" dir="ltr" data-bind="' + b + 'to" value="' + esc(p.to) + '"></td>' +
-        '<td><input class="inp" dir="ltr" maxlength="30" data-bind="' + b + 'single" value="' + esc(p.single) + '"></td>' +
-        '<td><input class="inp" dir="ltr" maxlength="30" data-bind="' + b + 'double" value="' + esc(p.double) + '"></td>' +
-        '<td><input class="inp" dir="ltr" maxlength="30" data-bind="' + b + 'triple" value="' + esc(p.triple) + '"></td>' +
+        '<td><input class="inp" dir="ltr" inputmode="decimal" maxlength="30" placeholder="0" data-type="price" data-bind="' + b + 'single" value="' + esc(p.single) + '"></td>' +
+        '<td><input class="inp" dir="ltr" inputmode="decimal" maxlength="30" placeholder="0" data-type="price" data-bind="' + b + 'double" value="' + esc(p.double) + '"></td>' +
+        '<td><input class="inp" dir="ltr" inputmode="decimal" maxlength="30" placeholder="0" data-type="price" data-bind="' + b + 'triple" value="' + esc(p.triple) + '"></td>' +
         '<td><button class="icon-btn danger" data-act="delPeriod" data-ri="' + ri + '" data-pi="' + pi + '" title="حذف الفترة">' + icon('x', 15) + '</button></td></tr>';
     });
     html += '</tbody></table><button class="btn-light" data-act="addPeriod" data-ri="' + ri + '">' + icon('plus', 14) + ' فترة / تواريخ</button></div>';
@@ -605,13 +635,20 @@ function editorHtml(h) {
   if (!d.rooms.length) html += '<div class="empty-sm">مفيش أنواع غرف. اضغط «نوع غرفة» للإضافة.</div>';
   html += '</div>';
 
-  html += '<div class="ecard"><h4><span>الخانات الإضافية (ملاحظات، سياسة الإلغاء، ...)</span><button class="btn-light" data-act="addSection">' + icon('plus', 15) + ' إضافة خانة</button></h4>';
+  html += '<div class="ecard"><h4><span>الملاحظات (Notes)</span><button class="btn-light" data-act="addSection">' + icon('plus', 15) + ' إضافة ملاحظة</button></h4>' +
+    '<div class="hint" style="margin:-6px 0 12px">اكتب الملاحظات بالإنجليزي. التقرير بيترجمها تلقائيًا للعربي أو العبري حسب اللغة المختارة فوق. اختار لون لكل ملاحظة.</div>';
   d.sections.forEach((s, si) => {
-    html += '<div class="sec"><div class="sec-top"><input class="inp" data-bind="data.sections.' + si + '.title" value="' + esc(s.title) + '" maxlength="80" placeholder="عنوان الخانة (مثال: ملاحظات)">' +
-      '<button class="icon-btn danger" data-act="delSection" data-si="' + si + '" title="حذف الخانة">' + icon('trash', 16) + '</button></div>' +
-      '<textarea class="inp" data-bind="data.sections.' + si + '.items" data-type="lines" placeholder="اكتب كل نقطة في سطر مستقل">' + esc((s.items || []).join('\n')) + '</textarea></div>';
+    const cur = secColor(s, si);
+    html += '<div class="sec" style="' + secStyle(cur) + '"><div class="sec-top"><div style="flex:1"><span class="lbl">اسم الملاحظة</span>' +
+      '<input class="inp" dir="ltr" data-bind="data.sections.' + si + '.title" value="' + esc(s.title) + '" maxlength="80" placeholder="e.g. SUPPLEMENTS"></div>' +
+      '<button class="icon-btn danger" data-act="delSection" data-si="' + si + '" title="حذف الملاحظة">' + icon('trash', 16) + '</button></div>' +
+      '<span class="lbl">وصف الملاحظة (كل نقطة في سطر مستقل)</span>' +
+      '<textarea class="inp" dir="ltr" data-bind="data.sections.' + si + '.items" data-type="lines" placeholder="1- POOL VIEW 7$ PER PERSON PER NIGHT">' + esc((s.items || []).join('\n')) + '</textarea>' +
+      '<div class="swatches"><span class="muted small">لون الملاحظة:</span>' +
+      SEC_COLORS.map((c) => '<button type="button" class="sw' + (c[0] === cur[0] ? ' on' : '') + '" style="background:' + c[4] + '" title="' + c[1] + '" aria-label="' + c[1] + '" data-act="secColor" data-si="' + si + '" data-c="' + c[0] + '"></button>').join('') +
+      '</div></div>';
   });
-  if (!d.sections.length) html += '<div class="empty-sm">مفيش خانات إضافية.</div>';
+  if (!d.sections.length) html += '<div class="empty-sm">مفيش ملاحظات. اضغط «إضافة ملاحظة».</div>';
   html += '</div>';
   return html;
 }
@@ -636,6 +673,7 @@ function onBind(e) {
   let v = t.type === 'checkbox' ? t.checked : t.value;
   if (t.dataset.type === 'int') v = parseInt(v, 10) || 0;
   if (t.dataset.type === 'lines') v = String(v).split('\n');
+  if (t.dataset.type === 'price') { const c = String(v).replace(/\$/g, ''); if (c !== v) t.value = c; v = c; }
   setPath(h, path, v);
   if (path === 'data.caseByCase') { renderEditor(); }
   refreshChrome();
@@ -758,13 +796,28 @@ async function saveAll() {
 const fmtDate = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? m[3] + '/' + m[2] + '/' + m[1] : ''; };
 const dash = '—';
 
+const fmtPrice = (v) => {
+  v = String(v == null ? '' : v).replace(/\$/g, '').trim();
+  if (!v) return dash;
+  return /^\d[\d,]*(\.\d+)?$/.test(v) ? '$' + v : v; // رقم → بنضيف $ ، أي نص تاني (زي ON REQUEST) بيظهر زي ما هو
+};
+const trText = (x) => (S.lang === 'en' ? x : (S.tr[S.lang][x] || x));
+
+function noteHtml(s, i) {
+  const c = secColor(s, i), rtl = S.lang !== 'en', title = trText(s.title);
+  return '<div class="hr-sec" style="' + secStyle(c) + '" dir="' + (rtl ? 'rtl' : 'ltr') + '" lang="' + S.lang + '">' +
+    (title ? '<h4>' + esc(/[:：]$/.test(title) ? title : title + ':') + '</h4>' : '') +
+    '<ul>' + s.items.map((x) => '<li>' + esc(trText(x)) + '</li>').join('') + '</ul></div>';
+}
+
 function hotelReportHtml(h) {
   const d = norm(h.data);
-  const main = d.nameEn || d.nameAr, left = d.nameEn ? d.nameAr : '';
   let html = '<article class="hr" data-id="' + esc(h.id) + '">';
   if (d.bannerText) html += '<div class="hr-banner c-' + d.bannerColor + '" dir="auto">' + esc(d.bannerText) + '</div>';
-  html += '<header class="hr-head"><div><div class="hr-en" dir="auto">' + esc(main) + '</div>' + (d.subtitle ? '<div class="hr-sub">' + esc(d.subtitle) + '</div>' : '') +
-    '</div>' + (left ? '<div class="hr-ar">' + esc(left) + '</div>' : '') + '</header><div class="hr-body">';
+  // الاسم العربي على اليمين والإنجليزي على الشمال (بيانات الفندق ما بتتترجمش)
+  html += '<header class="hr-head"><div class="hr-ar" dir="rtl">' + esc(d.nameAr) + '</div>' +
+    '<div class="hr-enw" dir="ltr"><div class="hr-en">' + esc(d.nameEn) + '</div>' + (d.subtitle ? '<div class="hr-sub" dir="auto">' + esc(d.subtitle) + '</div>' : '') +
+    '</div></header><div class="hr-body">';
   if (d.caseByCase) {
     html += '<div class="hr-cbc" dir="auto">' + esc(d.caseByCaseText || 'Case By Case') + '</div>';
   } else if (d.rooms.length) {
@@ -775,19 +828,70 @@ function hotelReportHtml(h) {
         html += '<tr>';
         if (i === 0) {
           html += '<td rowspan="' + per.length + '"><div class="t-en" dir="auto">' + esc(r.typeEn || r.typeAr) + '</div>' + (r.typeEn && r.typeAr ? '<div class="t-ar">' + esc(r.typeAr) + '</div>' : '') + '</td>' +
-            '<td rowspan="' + per.length + '" class="c" dir="auto">' + esc(r.basis || dash) + '</td>';
+            '<td rowspan="' + per.length + '" class="c b" dir="auto">' + esc(r.basis || dash) + '</td>';
         }
         const dates = p.from && p.to ? fmtDate(p.from) + ' – ' + fmtDate(p.to) : fmtDate(p.from || p.to);
-        html += '<td class="c" dir="ltr">' + esc(dates || dash) + '</td><td class="c" dir="auto">' + esc(p.single || dash) + '</td><td class="c" dir="auto">' + esc(p.double || dash) + '</td><td class="c" dir="auto">' + esc(p.triple || dash) + '</td></tr>';
+        html += '<td class="c" dir="ltr">' + esc(dates || dash) + '</td><td class="c" dir="ltr">' + esc(fmtPrice(p.single)) + '</td><td class="c" dir="ltr">' + esc(fmtPrice(p.double)) + '</td><td class="c" dir="ltr">' + esc(fmtPrice(p.triple)) + '</td></tr>';
       });
     });
     html += '</tbody></table>';
   }
-  d.sections.forEach((s, i) => {
-    html += '<div class="hr-sec s' + (i % 5) + '">' + (s.title ? '<h4>' + esc(/[:：]$/.test(s.title) ? s.title : s.title + ':') + '</h4>' : '') +
-      '<ul>' + s.items.map((x) => '<li dir="auto">' + esc(x) + '</li>').join('') + '</ul></div>';
-  });
+  d.sections.forEach((s, i) => { html += noteHtml(s, i); });
   return html + '</div></article>';
+}
+
+function langSwitchHtml() {
+  return '<div class="lang noprint" role="group" aria-label="لغة الملاحظات">' +
+    LANGS.map((l) => '<button type="button" class="' + (S.lang === l[0] ? 'on' : '') + '" data-act="lang" data-l="' + l[0] + '">' + l[1] + '</button>').join('') + '</div>';
+}
+
+function setLang(l) {
+  if (!LANGS.some((x) => x[0] === l) || l === S.lang) return;
+  S.lang = l;
+  try { localStorage.setItem('hr_lang', l); } catch (e) { /* ignore */ }
+  document.querySelectorAll('.lang button').forEach((b) => b.classList.toggle('on', b.dataset.l === l));
+  if (S.tab === 'reports') viewReports();
+}
+
+function setTrStatus() {
+  const el = $('#trStatus'), pb = $('#printBtn');
+  if (pb) pb.disabled = S.trBusy;
+  if (!el) return;
+  if (S.trBusy) { el.className = 'tr-status small'; el.textContent = 'جاري ترجمة الملاحظات… (أول مرة بتاخد وقت، وبعدها بتبقى فورية)'; }
+  else if (S.trErr) { el.className = 'tr-status err small'; el.textContent = S.trErr + ' — الملاحظات معروضة بالإنجليزي'; }
+  else { el.className = 'tr-status small'; el.textContent = ''; }
+}
+
+function renderSheet() {
+  const sh = $('#sheet'); if (!sh) return;
+  const hs = reportHotels();
+  sh.innerHTML = hs.length ? hs.map(hotelReportHtml).join('') : '<div class="empty-big">مفيش فنادق لعرضها</div>';
+  fitReport();
+}
+
+let trToken = 0;
+async function ensureTranslations() {
+  const L = S.lang;
+  if (L === 'en' || !S.user) { S.trBusy = false; S.trErr = ''; setTrStatus(); return; }
+  const set = new Set();
+  reportHotels().forEach((h) => norm(h.data).sections.forEach((s) => { if (s.title) set.add(s.title); s.items.forEach((x) => set.add(x)); }));
+  const need = Array.from(set).filter((x) => !(x in S.tr[L]));
+  const my = ++trToken;
+  S.trErr = '';
+  if (!need.length) { S.trBusy = false; setTrStatus(); return; }
+  S.trBusy = true; setTrStatus();
+  try {
+    for (let i = 0; i < need.length; i += 40) {
+      if (my !== trToken || S.lang !== L) return;
+      const chunk = need.slice(i, i + 40);
+      const r = await api('translate', { lang: L, texts: chunk });
+      chunk.forEach((t, k) => { S.tr[L][t] = r.translations[k] || t; });
+      if (my === trToken && S.lang === L && S.tab === 'reports') renderSheet();
+    }
+  } catch (e) {
+    if (my === trToken) S.trErr = e.message || 'تعذّرت الترجمة';
+  }
+  if (my === trToken) { S.trBusy = false; setTrStatus(); }
 }
 
 function reportHotels() {
@@ -800,12 +904,14 @@ function viewReports() {
     '<button class="chip' + (S.rRegion === r.id ? ' on' : '') + '" data-act="rchip" data-id="' + esc(r.id) + '">' + esc(r.name) + '</button>').join('');
   $('#view').innerHTML = '<div class="report-view">' +
     '<div class="rtop noprint"><h2>' + icon('building') + ' التقرير النهائي <span class="badge gray">' + hs.length + ' فندق</span></h2>' +
-    '<button class="btn-dark" data-act="print">' + icon('printer', 16) + ' طباعة / تصدير PDF</button></div>' +
+    '<div class="rtop-tools">' + langSwitchHtml() + '<span id="trStatus" class="tr-status small"></span>' +
+    '<button class="btn-dark" id="printBtn" data-act="print">' + icon('printer', 16) + ' طباعة / تصدير PDF</button></div></div>' +
     '<div class="rfilter noprint"><b>' + icon('pin', 16) + ' تصفية حسب المنطقة</b><div class="chips">' + chips + '</div></div>' +
     (canEdit() && p.count ? '<div class="pendnote noprint">فيه ' + p.count + ' تعديل غير محفوظ، وهو ظاهر في التقرير ده. احفظه الأول لو عايز النسخة المعتمدة.</div>' : '') +
-    '<div class="report-area"><div class="sheet" id="sheet">' +
-    (hs.length ? hs.map(hotelReportHtml).join('') : '<div class="empty-big">مفيش فنادق لعرضها</div>') + '</div></div></div>';
-  fitReport();
+    '<div class="report-area"><div class="sheet" id="sheet"></div></div></div>';
+  renderSheet();
+  setTrStatus();
+  ensureTranslations();
 }
 
 // فندق أطول من صفحة A4 كاملة مينفعش يتقسم، فبنصغّره بالقدر اللازم ليدخل في صفحة واحدة
@@ -1040,7 +1146,9 @@ document.addEventListener('click', async (e) => {
     case 'delRoom': { const h = selectedHotel(); h.data.rooms.splice(ri, 1); renderEditor(); refreshChrome(); break; }
     case 'addPeriod': { const h = selectedHotel(); h.data.rooms[ri].periods.push(emptyPeriod()); renderEditor(); refreshChrome(); break; }
     case 'delPeriod': { const h = selectedHotel(); h.data.rooms[ri].periods.splice(pi, 1); renderEditor(); refreshChrome(); break; }
-    case 'addSection': { const h = selectedHotel(); h.data.sections.push({ title: '', items: [] }); renderEditor(); refreshChrome(); break; }
+    case 'addSection': { const h = selectedHotel(); h.data.sections.push({ title: '', items: [], color: SEC_COLORS[h.data.sections.length % SEC_COLORS.length][0] }); renderEditor(); refreshChrome(); break; }
+    case 'secColor': { const h = selectedHotel(); h.data.sections[si].color = el.dataset.c; renderEditor(); refreshChrome(); break; }
+    case 'lang': setLang(el.dataset.l); break;
     case 'delSection': { const h = selectedHotel(); h.data.sections.splice(si, 1); renderEditor(); refreshChrome(); break; }
     case 'manageRegions': regionsModal(); break;
     case 'addRegion': regionOp('createRegion', { name: $('#newRegion').value }); break;
